@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="static/index.css" />
+    <link rel="stylesheet" href="static/home.css" />
+    <scrip src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <title>Phone Directory</title>
+  </head>
+  <body>
+
+    <div class="container">
+      <div role="presentation" class="form-container">
+          <form class="thoughts-form" method="post" action="{{ url_for('index') }}">
+              <div class="con1">
+                  <div class="com1">
+                      <input type="text" id="last_name" name="last_name" required placeholder="Фамилия"/>
+                      <input type="text" id="first_name" name="first_name" required placeholder="Имя"/>
+                      <input type="text" id="middle_name" name="middle_name" required placeholder="Отчество"/>
+                      <input type="text" id="phone" name="phone" required placeholder="Телефон"/>
+                      <button type="submit" id="Search">Поиск</button>
+                  </div>
+              </div>
+          </form>
+          <ul class="choices">
+              <li><button class="openform">Поиск</button></li>
+          </ul>
+      </div>
+  
+      <div role="presentation" class="form-container">
+          <form class="thoughts1-form" method="post" action="{{ url_for('add_entry') }}">
+              <div class="con1">
+                  <div class="com1">
+                      <input type="text" id="last_name" name="last_name" required placeholder="Фамилия" /><br />
+                      <input type="text" id="first_name" name="first_name" required placeholder="Имя" /><br />
+                      <input type="text" id="middle_name" name="middle_name" required placeholder="Отчество" /><br />
+                      <input type="text" id="street" name="street" required placeholder="Улица" /><br />
+                      <input type="text" id="house" name="house" required placeholder="Дом" /><br />
+                      <input type="text" id="building" name="building" required placeholder="Корпус" /><br />
+                      <input type="text" id="apartment" name="apartment" required placeholder="Квартира" /><br />
+                      <input type="text" id="phone" name="phone" required placeholder="Телефон" /><br />
+                      <button type="submit" id="Add">Добавить</button>
+                  </div>
+              </div>
+          </form>
+          <ul class="choices">
+              <li><button class="openform">Добавить</button></li>
+          </ul>
+      </div>
+  </div>
+
+    <style>
+
+
+      .container {
+          display: flex;
+          width: 100%;
+          height: 100%;
+      }
+
+      .form-container {
+          margin-top: 1rem;
+          flex: 1;
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+      }
+
+      .form-container:first-child {
+          background: var(--greyLight-1);
+      }
+
+      .form-container:last-child {
+          background: var(--greyLight-1);
+      }
+
+      .con1 {
+          min-height: 90%;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+      }
+
+      .com1 {
+          margin-top: 3%;
+          margin-bottom: 3%;
+          width: 550px;
+          justify-content: center;
+          border-radius: 3rem;
+          box-shadow: 0.8rem 0.8rem 1.4rem var(--greyLight-2), -0.2rem -0.2rem 1.8rem var(--white);
+          padding: 1rem;
+          display: grid;
+          grid-template-rows: repeat(autofit, -webkit-min-content);
+          grid-template-rows: repeat(autofit, min-content);
+          grid-column-gap: 5rem;
+          align-items: center;
+      }
+
+      .choices {
+          margin-top: auto;
+      }
+
+      .inputs {
+          text-align: left;
+          margin-top: 30px;
+      }
+
+      label, input, button {
+          display: block;
+          width: 100%;
+          padding: 0;
+          border: none;
+          outline: none;
+          box-sizing: border-box;
+      }
+
+      input::placeholder {
+          color: gray;
+      }
+
+      input {
+          padding-left: 10px; /* Задайте нужное значение отступа слева */
+          padding-right: 10px;
+          height: 55px;
+          width: 500px;
+          display: flex;
+          align-items: center;
+          margin: 5px;
+          outline: 0;
+          border: none;
+          border-radius: 1rem;
+          max-height: 65px;
+          overflow: hidden;
+          transition: max-height .5s;
+          box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
+          background: var(--greyLight-1);
+          color: var(--primary);
+          caret-color: var(--primary);
+      }
+
+
+      input:focus {
+          box-shadow: inset 4px 4px 4px #d1d9e6, inset -4px -4px 4px #f9f9f9;
+      }
+
+      button {
+          margin: 1rem;
+          width: 500px;
+          height: 55px;
+          border: 0;
+          outline: 0;
+          padding: 10px;
+          cursor: pointer;
+          margin: 7px;
+          color: black;
+          font-size: 16px;
+          font-weight: 400;
+          border-radius: 1rem;
+          box-shadow: 0.3rem 0.3rem 0.3rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+          transition: all 0.5s ease;
+      }
+
+      button:hover {
+          box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
+          transform: scale(0.985);
+          transition: 0.5s;
+      }
+
+      .confirmation-message, .thoughts-form, .thoughts1-form {
+          display: none;
+      }
+
+      ul {
+          margin-top: 1rem;
+      }
+      body {
+        font-size: 16px;
+      }
+  </style>
+    
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    
+    <script>
+      var openButton1 = $(".form-container:first-child .openform"),
+          closeButton1 = $(".form-container:first-child .cancel"),
+          sendButton1 = $(".form-container:first-child .send-email"),
+          confirmation1 = $(".form-container:first-child .confirmation-message"),
+          pane1 = $(".form-container:first-child .thoughts-form"),
+          choices1 = $(".form-container:first-child .choices");
+
+      openButton1.click(function(e) {
+          choices1.fadeOut();
+          pane1.slideDown();
+          e.preventDefault();
+      });
+
+      var openButton2 = $(".form-container:last-child .openform"),
+          closeButton2 = $(".form-container:last-child .cancel"),
+          sendButton2 = $(".form-container:last-child .send-email"),
+          confirmation2 = $(".form-container:last-child .confirmation-message"),
+          pane2 = $(".form-container:last-child .thoughts1-form"),
+          choices2 = $(".form-container:last-child .choices");
+
+      openButton2.click(function(e) {
+          choices2.fadeOut();
+          pane2.slideDown();
+          e.preventDefault();
+      });
+  </script>
+    
+
+    <div class="con">
+      <div class="com">
+        <table border="1" class="words_list">
+          <tr>
+            <th>Фамилия</th>
+            <th>Имя</th>
+            <th>Отчество</th>
+            <th>Улица</th>
+            <th>Дом</th>
+            <th>Корпус</th>
+            <th>Квартира</th>
+            <th>Телефон</th>
+            <th>Действия</th>
+          </tr>
+          {% for entry in main_entries %}
+          <tr>
+            <td>{{ entry.last_name }}</td>
+            <td>{{ entry.first_name }}</td>
+            <td>{{ entry.middle_name }}</td>
+            <td>{{ entry.street }}</td>
+            <td>{{ entry.house }}</td>
+            <td>{{ entry.building }}</td>
+            <td>{{ entry.apartment }}</td>
+            <td>{{ entry.phone }}</td>
+            <td class="action-links">
+              <a href="{{ url_for('edit_entry', id=entry.id) }}">Edit</a>
+              <a href="{{ url_for('delete_entry', id=entry.id) }}">Delete</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </table>
+        <style>
+          .action-links {
+            text-align: center;
+        }
+        .action-links a:hover {
+          color: #ff00ff;
+        }
+        .action-links a {
+            display: inline-block;
+            margin: 0 5px;
+            text-decoration: none;
+            color: #007bff;
+            transition: color 0.6s ease; 
+        }
+          .words_list {
+            border-collapse: collapse;
+            border-radius: 2.5rem;
+            width: 100%; /* или другое значение в процентах или пикселях */
+            margin: auto;
+            font-size: 20px;
+            box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-3), inset -0.2rem -0.2rem 0.5rem var(--white);
+            border-bottom: none;
+            border-top: none;
+            border-right: none;
+            border-left: none;
+          }
+    
+          .words_list th, .words_list td {
+            padding: 8px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: 00;
+            border-bottom: none;
+            border-top: none;
+            border-right: none;
+            border-left: none;
+          }
+          .words_list th:last-child, .words_list td:last-child {
+            border-bottom: none;
+            border-top: none;
+            border-right: none;
+            border-left: none;
+          }
+
+          .words_list:last-child {
+            border-bottom: none;
+            border-top: none;
+            border-right: none;
+            border-left: none;
+          }
+    
+        </style>
+      </div>
+    </div>
+  </body>
+</html>

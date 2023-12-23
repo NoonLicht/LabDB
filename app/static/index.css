@@ -1,0 +1,163 @@
+::-webkit-scrollbar{
+    width: 7px;
+    height: 7px;
+    background-color: transparent
+}
+::-webkit-scrollbar-track{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.25);
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.25);
+    background-color: rgba(77, 77, 77, 0.015);;
+}
+::-webkit-scrollbar-thumb{
+    border-radius: 10px;
+    background-color: rgba(128,128,128,0.35);
+}
+
+
+:root {
+        --primary-light: #8abdff;
+        --primary: #6d5dfc;
+        --primary-dark: #5b0eeb;
+        --white: #FFFFFF;
+        --greyLight-1: #E4EBF5;
+        --greyLight-2: #c8d0e7;
+        --greyLight-3: #bec8e4;
+        --greyDark: #5a6378;
+    }
+      *, *::before, *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: inherit;
+    }
+    html {
+        box-sizing: border-box;
+        font-size: 62.5%;
+        overflow-y: scroll;
+        background: var(--greyLight-1);
+    }
+    
+    .neumorphic-header{
+      display: none;
+    }
+
+    .components {
+        width: 95%;
+        height: 8rem;
+        border-radius: 3rem;
+        box-shadow: 0.8rem 0.8rem 1.4rem var(--greyLight-2), -0.2rem -0.2rem 1.8rem var(--white);
+        padding: 1rem;
+        display: flex-end;
+        justify-items: end;
+        justify-content: center;
+        grid-template-rows: repeat(autofit, -webkit-min-content);
+        grid-template-rows: repeat(autofit, min-content);
+        grid-column-gap: 5rem;
+        grid-row-gap: 2.5rem;
+        align-items: center;
+    }
+    .container-icon {
+        min-height: 10%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Poppins", sans-serif;
+        background: var(--greyLight-1);
+    }
+    .container {
+        min-height: 10%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Poppins", sans-serif;
+        background: var(--greyLight-1);
+    }
+    .con{
+        min-height: 90%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Poppins", sans-serif;
+        background: var(--greyLight-1);
+    }
+    .com {
+        margin-top: 3%;
+        margin-bottom: 3%;
+        width: 95%;
+        border-radius: 3rem;
+        box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
+        padding: 1rem;
+        display: grid;
+        grid-template-rows: repeat(autofit, -webkit-min-content);
+        grid-template-rows: repeat(autofit, min-content);
+        grid-column-gap: 5rem;
+        grid-row-gap: 2.5rem;
+        align-items: center;
+    }
+    
+    .icon {
+      margin-top: 0.4%;
+        display: flex;
+        justify-content: flex-end;
+    }
+    .icon__account,
+    .icon__home,
+    .icon__settings,
+    .icon__catalog,
+    .icon__login,
+    .icon__logo,
+    .icon__faq,
+    .icon__menu {
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+        box-shadow: 0.3rem 0.3rem 0.3rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 2rem;
+        margin-right: 5rem;
+        cursor: pointer;
+        color: var(--greyDark);
+        /* color: black; */
+        transition: all 0.5s ease;
+    }
+    .icon__account:first-child,
+    .icon__home:first-child,
+    .icon__settings:first-child,
+    .icon__catalog:first-child,
+    .icon__login:first-child,
+    .icon__faq:first-child,
+    .icon__menu:first-child {
+    margin-left: 0;
+    }
+    .icon__account:active, .icon__home:active, .icon__settings:active, .icon__catalog:active, .icon__login:active, .icon__faq:active{
+        box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
+        color: var(--primary);
+    }
+    .icon__account:hover, .icon__home:hover, .icon__settings:hover, .icon__catalog:hover, .icon__login:hover, .icon__faq:hover {
+        /* color: var(--primary); */
+      box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
+      /* transform: scale(0.995); */
+      transition: 0.5s;
+      color: var(--primary);
+    }
+    .icon__logo:first-child{
+      margin-left: 0;
+    }
+
+    .icon__logo:active{
+      box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
+      color: var(--primary);
+    }
+    .icon__logo:hover{
+      /* color: var(--primary); */
+      box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
+      /* transform: scale(0.995); */
+      transition: 0.5s;
+      color: var(--primary);
+    }
+
+    
